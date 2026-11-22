@@ -1,0 +1,5 @@
+/target/
+/gui/target/
+gui/Cargo.lock
+*.bk
+.DS_Store

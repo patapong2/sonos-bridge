@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Sonos Bridge
+GenericName=Sonos audio bridge control panel
+Comment=Start the sonos-bridge daemon and choose where desktop audio goes (PC speakers, Sonos, both, or off)
+Exec=/home/shenx/.local/bin/sonos-bridge-gui
+Icon=multimedia-audio-player
+Type=Application
+Categories=AudioVideo;Audio;Settings;
+Terminal=false
+StartupNotify=true
+Keywords=sonos;audio;bridge;speaker;

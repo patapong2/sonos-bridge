@@ -1,0 +1,18 @@
+[Unit]
+Description=sonos-bridge - system audio output that routes to Sonos
+Documentation=https://github.com/dheijl/swyh-rs (related project)
+After=pipewire.service wireplumber.service pulseaudio.service graphical-session.target
+Wants=pipewire.service
+
+[Service]
+Type=simple
+ExecStart=@EXE@ daemon
+Environment=SONOS_BRIDGE_VERBOSE=1
+Restart=on-failure
+RestartSec=3
+# the daemon unregisters its null-sink and stops the speakers on SIGTERM,
+# give it room to do that
+TimeoutStopSec=20
+
+[Install]
+WantedBy=default.target

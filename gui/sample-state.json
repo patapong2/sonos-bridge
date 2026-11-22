@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Living Room",
+    "udn": "uuid:ZonePlayer-B8E937B11A2C3D4E5F60718293A4",
+    "ip": "192.168.1.21",
+    "port": 1400,
+    "coordinator": true,
+    "group": "RINCON_B8E937B11A2C3D4E5F60718293A401",
+    "members": 2,
+    "volume": 18
+  },
+  {
+    "name": "Kitchen",
+    "udn": "uuid:ZonePlayer-B8E937B11A2C3D4E5F60718293A5",
+    "ip": "192.168.1.22",
+    "port": 1400,
+    "coordinator": false,
+    "group": "RINCON_B8E937B11A2C3D4E5F60718293A401",
+    "members": 2,
+    "volume": null
+  }
+]

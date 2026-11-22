@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sonos Bridge</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="dot" id="live"></span>
+    <h1>Sonos Bridge</h1>
+    <span class="sub" id="sub">system audio &rarr; Sonos</span>
+  </div>
+  <div class="meter" title="audio level of the virtual output">
+    <div class="meter-bar"><div class="meter-fill" id="meter"></div></div>
+    <span class="meter-txt" id="metertxt">silence</span>
+  </div>
+</header>
+
+<main>
+  <section class="card">
+    <h2>Where should audio go?</h2>
+    <p class="hint">Pick <b>Sonos Bridge</b> as the output device in your system sound settings
+      (it is always there while a route is active), then choose the destination here.</p>
+    <div class="routes" id="routes">
+      <button data-mode="off"    title="unregister the virtual output, leave the system alone">Off</button>
+      <button data-mode="local"  title="pass the audio through to the normal speakers">Speakers</button>
+      <button data-mode="sonos"  title="stream the audio to the selected Sonos players">Sonos</button>
+      <button data-mode="both"   title="normal speakers and Sonos at the same time">Both</button>
+    </div>
+    <div class="row">
+      <label>Speakers to stream to</label>
+      <input id="player" placeholder="Living Room, Kitchen  &nbsp;or&nbsp; all" list="playerlist">
+      <datalist id="playerlist"></datalist>
+      <button id="apply" class="primary">Apply</button>
+    </div>
+    <div class="row">
+      <label>Volume</label>
+      <input id="vol" type="range" min="0" max="100" step="1" value="25">
+      <span id="volval" class="mono">25</span>
+      <button id="volbtn">Set</button>
+      <label class="tight">Local output</label>
+      <select id="hw"></select>
+    </div>
+    <div id="banner" class="banner"></div>
+  </section>
+
+  <section class="card">
+    <h2>Sonos speakers</h2>
+    <div class="row tight-row">
+      <button id="scan">Rescan LAN</button>
+      <span class="hint" id="scanned"></span>
+    </div>
+    <table id="players">
+      <thead><tr><th></th><th>Name</th><th>Address</th><th>Group</th><th>Vol</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>State</h2>
+    <pre id="state" class="mono small"></pre>
+  </section>
+
+  <section class="card">
+    <h2>Diagnostics</h2>
+    <div class="row tight-row"><button id="check">Run checks</button></div>
+    <table id="checks">
+      <thead><tr><th></th><th>Item</th><th>Detail</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>Manual fallback (if Sonos refuses to pull the stream)</h2>
+    <p class="hint">Sonos &rarr; Browse &rarr; Music Services &rarr; Add Music Services &rarr; Add a
+      Radio Station URL, then paste this address. It only works while the encoder is running.</p>
+    <div class="row">
+      <input id="url" readonly value="(not running)">
+      <button id="copyurl">Copy</button>
+      <button id="showurl">Reveal token</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span id="foot"></span>
+  <a href="https://github.com/dheijl/swyh-rs">inspired by swyh-rs</a>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>

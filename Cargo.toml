@@ -1,0 +1,22 @@
+[package]
+name = "sonos-bridge"
+version = "0.1.0"
+edition = "2021"
+description = "Register as a system audio output on Ubuntu and route it to Sonos speakers (or straight through to the normal speakers)"
+license = "MIT"
+publish = false
+
+[[bin]]
+name = "sonos-bridge"
+path = "src/main.rs"
+
+# No external crates on purpose: std only, so the build never depends on
+# network access or on crate versions drifting.  Everything that needs real
+# audio work is delegated to system tools (pactl, parec/pw-record, ffmpeg).
+[dependencies]
+
+[profile.release]
+opt-level = 2
+lto = true
+codegen-units = 1
+strip = true

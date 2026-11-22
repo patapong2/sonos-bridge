@@ -1,0 +1,25 @@
+[package]
+name = "sonos-bridge-gui"
+version = "0.1.0"
+edition = "2021"
+description = "GPUI desktop panel for the sonos-bridge daemon"
+license = "MIT"
+publish = false
+
+# Deliberately NOT a member of the core crate's workspace: the audio daemon
+# must keep building with no network access and no dependencies at all.
+[workspace]
+
+[dependencies]
+# gpui 0.2.2 is the released crates.io build of Zed's UI toolkit; it works
+# outside Zed. Verified building on Ubuntu 25.04 / Wayland - see NOTES.md for
+# the apt packages it needs.
+gpui = "0.2.2"
+
+# gpui's dependency chain pulls xattr 0.2.3, which does not compile against
+# libc >= 0.2.178 (ENOATTR was removed on linux). Pin libc until xattr catches
+# up, otherwise `cargo build` fails inside a transitive dependency.
+libc = "=0.2.177"
+
+[profile.release]
+opt-level = 2
