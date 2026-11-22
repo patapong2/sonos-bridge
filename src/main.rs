@@ -29,7 +29,9 @@ mod util;
 mod web;
 mod xml;
 
-pub const VERSION: &str = "0.1.0";
+/// single source of truth: the crate version in Cargo.toml. A hand-written
+/// literal here is how a release ends up reporting the wrong number.
+pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 /// `--sink foo` style options, mapped onto config keys.
 const FLAGS: [(&str, &str); 14] = [

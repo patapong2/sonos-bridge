@@ -1,6 +1,6 @@
 [package]
 name = "sonos-bridge-gui"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
 description = "GPUI desktop panel for the sonos-bridge daemon"
 license = "MIT"
@@ -23,3 +23,5 @@ libc = "=0.2.177"
 
 [profile.release]
 opt-level = 2
+# gpui is large; shipping symbols would double the download for nothing
+strip = true
